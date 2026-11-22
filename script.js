@@ -83,53 +83,27 @@
 
 
 /* =========================================
-   PRINCESS DECOR — falling petals + side animals/princesses
+   PRINCESS DECOR — falling petals (shapes, no emoji)
 ========================================= */
 (function () {
-  var sheet = document.getElementById("sheet");
-  if (!sheet) return;
-
   function rnd(a, b) { return a + Math.random() * (b - a); }
-
-  /* petals drifting down the whole screen */
   var layer = document.createElement("div");
   layer.className = "petal-layer";
   layer.setAttribute("aria-hidden", "true");
-  var fall = ["🌸", "🌹", "💮", "✨", "🌷", "💖"];
-  for (var i = 0; i < 14; i++) {
+  var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
+  for (var i = 0; i < 16; i++) {
     var p = document.createElement("span");
+    var size = rnd(9, 18);
     p.className = "petal";
-    p.textContent = fall[i % fall.length];
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.background = colors[i % colors.length];
     p.style.left = rnd(0, 96) + "%";
-    p.style.fontSize = rnd(14, 24) + "px";
     p.style.animationDuration = rnd(10, 18).toFixed(1) + "s";
     p.style.animationDelay = (-rnd(0, 16)).toFixed(1) + "s";
     layer.appendChild(p);
   }
   document.body.appendChild(layer);
-
-  /* swaying friends along both edges, top to bottom */
-  var side = ["🦄", "🐰", "🌹", "🦋", "👸", "🐑", "🌷", "🦢", "🧚‍♀️", "🐥", "🏰", "🐻", "🎀", "🦌", "🌸", "🐱"];
-
-  function build() {
-    var h = sheet.scrollHeight, n = Math.round(h / 150), left = true;
-    for (var i = 0; i < n; i++) {
-      var d = document.createElement("span");
-      d.className = "decor";
-      d.setAttribute("aria-hidden", "true");
-      d.textContent = side[i % side.length];
-      d.style.top = (120 + i * 150 + rnd(-30, 30)) + "px";
-      d.style[left ? "left" : "right"] = rnd(0, 3) + "%";
-      d.style.fontSize = rnd(26, 40) + "px";
-      d.style.setProperty("--d", rnd(3.8, 6.4).toFixed(1) + "s");
-      d.style.animationDelay = (-rnd(0, 5)).toFixed(1) + "s";
-      sheet.appendChild(d);
-      left = !left;
-    }
-  }
-
-  if (document.readyState === "complete") build();
-  else window.addEventListener("load", build);
 })();
 
 
