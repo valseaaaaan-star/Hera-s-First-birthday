@@ -1,5 +1,5 @@
 /* =========================================
-   COUNTDOWN — to the ceremony, Dec 12, 2026, 10:00 AM
+   COUNTDOWN — ceremony, Dec 12, 2026, 10:00 AM
 ========================================= */
 (function () {
   var target = new Date("2026-12-12T10:00:00");
@@ -30,6 +30,57 @@
 
 
 /* =========================================
+   TWINKLING SPARKLES in the hero
+========================================= */
+(function () {
+  var box = document.getElementById("sparkles");
+  if (!box) return;
+  var chars = ["✦", "✧", "★", "✨", "⋆"];
+
+  for (var i = 0; i < 22; i++) {
+    var s = document.createElement("span");
+    s.className = "sp";
+    s.textContent = chars[i % chars.length];
+    s.style.left = Math.random() * 96 + "%";
+    s.style.top = Math.random() * 94 + "%";
+    s.style.fontSize = 10 + Math.random() * 16 + "px";
+    s.style.animationDelay = (Math.random() * 3.2).toFixed(2) + "s";
+    s.style.animationDuration = (2.4 + Math.random() * 2.4).toFixed(2) + "s";
+    box.appendChild(s);
+  }
+})();
+
+
+/* =========================================
+   TAP THE HERO — little burst of sparkles
+========================================= */
+(function () {
+  var hero = document.getElementById("hero");
+  if (!hero) return;
+  var bits = ["✨", "💖", "⭐", "🌸", "✦"];
+
+  hero.addEventListener("click", function (e) {
+    if (e.target.closest("a, button")) return;
+    var rect = hero.getBoundingClientRect();
+
+    for (var i = 0; i < 8; i++) {
+      var p = document.createElement("span");
+      var angle = (Math.PI * 2 * i) / 8;
+      var dist = 40 + Math.random() * 40;
+      p.className = "pop";
+      p.textContent = bits[Math.floor(Math.random() * bits.length)];
+      p.style.left = e.clientX - rect.left + "px";
+      p.style.top = e.clientY - rect.top + "px";
+      p.style.setProperty("--x", Math.cos(angle) * dist + "px");
+      p.style.setProperty("--y", Math.sin(angle) * dist + "px");
+      hero.appendChild(p);
+      setTimeout(function (el) { el.remove(); }, 900, p);
+    }
+  });
+})();
+
+
+/* =========================================
    SCROLL REVEAL
 ========================================= */
 (function () {
@@ -55,7 +106,6 @@
 
 /* =========================================
    VENUE TABS — Church / Reception
-   Swaps the map, title, time and directions link.
 ========================================= */
 (function () {
   var tabs = document.querySelectorAll(".tab");
