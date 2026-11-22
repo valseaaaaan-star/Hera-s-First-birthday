@@ -1,5 +1,5 @@
 /* =========================================
-   COUNTDOWN — ceremony, Dec 12, 2026, 10:00 AM
+   COUNTDOWN — church ceremony, Dec 12, 2026, 10:00 AM
 ========================================= */
 (function () {
   var target = new Date("2026-12-12T10:00:00");
@@ -30,43 +30,66 @@
 
 
 /* =========================================
-   TWINKLING SPARKLES in the hero
+   RAINBOW BOUNCY NAME — every letter its own color
 ========================================= */
 (function () {
-  var box = document.getElementById("sparkles");
-  if (!box) return;
-  var chars = ["✦", "✧", "★", "✨", "⋆"];
+  var colors = ["#ff6b6b", "#ffd93d", "#6bdba0", "#5ec8ff", "#b69cff", "#ff9ecf"];
+  var n = 0;
 
-  for (var i = 0; i < 22; i++) {
+  document.querySelectorAll(".nm").forEach(function (el) {
+    var text = el.textContent.trim();
+    el.textContent = "";
+
+    text.split("").forEach(function (ch) {
+      var span = document.createElement("span");
+      span.className = "ltr";
+      span.textContent = ch;
+      span.style.color = colors[n % colors.length];
+      span.style.animationDelay = (n * 0.12).toFixed(2) + "s";
+      el.appendChild(span);
+      n++;
+    });
+  });
+})();
+
+
+/* =========================================
+   FLOATING BALLOONS + STARS in the hero
+========================================= */
+(function () {
+  var box = document.getElementById("floaters");
+  if (!box) return;
+  var things = ["🎈", "🎈", "⭐", "🎈", "✨", "🧸"];
+
+  for (var i = 0; i < 12; i++) {
     var s = document.createElement("span");
-    s.className = "sp";
-    s.textContent = chars[i % chars.length];
-    s.style.left = Math.random() * 96 + "%";
-    s.style.top = Math.random() * 94 + "%";
-    s.style.fontSize = 10 + Math.random() * 16 + "px";
-    s.style.animationDelay = (Math.random() * 3.2).toFixed(2) + "s";
-    s.style.animationDuration = (2.4 + Math.random() * 2.4).toFixed(2) + "s";
+    s.className = "fl";
+    s.textContent = things[i % things.length];
+    s.style.left = Math.random() * 92 + "%";
+    s.style.fontSize = 24 + Math.random() * 22 + "px";
+    s.style.animationDuration = (9 + Math.random() * 9).toFixed(1) + "s";
+    s.style.animationDelay = (-Math.random() * 14).toFixed(1) + "s";
     box.appendChild(s);
   }
 })();
 
 
 /* =========================================
-   TAP THE HERO — little burst of sparkles
+   TAP THE HERO — confetti pop!
 ========================================= */
 (function () {
   var hero = document.getElementById("hero");
   if (!hero) return;
-  var bits = ["✨", "💖", "⭐", "🌸", "✦"];
+  var bits = ["🎈", "⭐", "🧸", "🍼", "🎉", "💖"];
 
   hero.addEventListener("click", function (e) {
     if (e.target.closest("a, button")) return;
     var rect = hero.getBoundingClientRect();
 
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 10; i++) {
       var p = document.createElement("span");
-      var angle = (Math.PI * 2 * i) / 8;
-      var dist = 40 + Math.random() * 40;
+      var angle = (Math.PI * 2 * i) / 10;
+      var dist = 44 + Math.random() * 46;
       p.className = "pop";
       p.textContent = bits[Math.floor(Math.random() * bits.length)];
       p.style.left = e.clientX - rect.left + "px";
@@ -105,7 +128,7 @@
 
 
 /* =========================================
-   VENUE TABS — Church / Reception
+   VENUE TABS — Church / Party
 ========================================= */
 (function () {
   var tabs = document.querySelectorAll(".tab");
