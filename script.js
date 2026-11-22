@@ -62,19 +62,21 @@
 
 
 /* =========================================
-   FLOATING HEARTS, BUTTERFLIES & BOWS near the top
+   RISING PETALS behind the bear (shapes, no emoji)
 ========================================= */
 (function () {
   var box = document.getElementById("floaters");
   if (!box) return;
-  var things = ["💖", "🦋", "🎀", "✨", "🌸", "💗"];
+  var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
 
-  for (var i = 0; i < 9; i++) {
+  for (var i = 0; i < 8; i++) {
     var s = document.createElement("span");
-    s.className = "fl";
-    s.textContent = things[i % things.length];
+    var size = 10 + Math.random() * 10;
+    s.className = "fl petal-shape";
+    s.style.width = size + "px";
+    s.style.height = size + "px";
+    s.style.background = colors[i % colors.length];
     s.style.left = Math.random() * 92 + "%";
-    s.style.fontSize = 18 + Math.random() * 14 + "px";
     s.style.animationDuration = (11 + Math.random() * 9).toFixed(1) + "s";
     s.style.animationDelay = (-Math.random() * 16).toFixed(1) + "s";
     box.appendChild(s);
@@ -91,7 +93,7 @@
   layer.className = "petal-layer";
   layer.setAttribute("aria-hidden", "true");
   var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
-  for (var i = 0; i < 16; i++) {
+  for (var i = 0; i < 22; i++) {
     var p = document.createElement("span");
     var size = rnd(9, 18);
     p.className = "petal";
