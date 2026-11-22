@@ -38,7 +38,8 @@ small{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(
 @keyframes drift{to{transform:translateX(26px)}}
 
 .floaters{position:absolute;top:0;left:0;right:0;height:780px;pointer-events:none;z-index:1;overflow:hidden}
-.fl{position:absolute;bottom:-50px;animation:rise linear infinite;opacity:.9}
+.fl{position:absolute;bottom:-50px;animation:rise linear infinite;opacity:.85}
+.petal-shape{border-radius:150% 0 150% 0}
 @keyframes rise{to{transform:translateY(-820px) rotate(14deg)}}
 .star{position:absolute;z-index:1;pointer-events:none;animation:twinkle 3.4s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(20deg)}}
