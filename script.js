@@ -30,10 +30,10 @@
 
 
 /* =========================================
-   RAINBOW BOUNCY NAME — every letter its own color
+   GIRLY BOUNCY NAME — pink, lilac, gold & sky letters
 ========================================= */
 (function () {
-  var colors = ["#ff6b6b", "#ffd93d", "#6bdba0", "#5ec8ff", "#b69cff", "#ff9ecf"];
+  var colors = ["#ff5fa2", "#ffcf4d", "#c9a7ff", "#ffb3d6", "#7fd0ff", "#ff8cc0"];
   var n = 0;
 
   document.querySelectorAll(".nm").forEach(function (el) {
@@ -54,19 +54,19 @@
 
 
 /* =========================================
-   FLOATING BALLOONS + STARS in the hero
+   FLOATING HEARTS, BUTTERFLIES & CROWNS in the hero
 ========================================= */
 (function () {
   var box = document.getElementById("floaters");
   if (!box) return;
-  var things = ["🎈", "🎈", "⭐", "🎈", "✨", "🧸"];
+  var things = ["💖", "🦋", "👑", "🎀", "✨", "🌸", "💗", "🎈"];
 
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < 14; i++) {
     var s = document.createElement("span");
     s.className = "fl";
     s.textContent = things[i % things.length];
     s.style.left = Math.random() * 92 + "%";
-    s.style.fontSize = 24 + Math.random() * 22 + "px";
+    s.style.fontSize = 22 + Math.random() * 22 + "px";
     s.style.animationDuration = (9 + Math.random() * 9).toFixed(1) + "s";
     s.style.animationDelay = (-Math.random() * 14).toFixed(1) + "s";
     box.appendChild(s);
@@ -75,12 +75,12 @@
 
 
 /* =========================================
-   TAP THE HERO — confetti pop!
+   TAP THE HERO — princess confetti pop!
 ========================================= */
 (function () {
   var hero = document.getElementById("hero");
   if (!hero) return;
-  var bits = ["🎈", "⭐", "🧸", "🍼", "🎉", "💖"];
+  var bits = ["👑", "💖", "🦋", "🎀", "🌸", "✨", "🦄"];
 
   hero.addEventListener("click", function (e) {
     if (e.target.closest("a, button")) return;
