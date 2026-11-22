@@ -3,158 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffb6d9">
+<meta name="theme-color" content="#f8d3d0">
 <meta name="description" content="Our little princess Jhanelle Atasha is turning ONE! · December 12, 2026">
-<title>Jhanelle Atasha — Our Little Princess Turns ONE!</title>
+<title>Jhanelle Atasha — My 1st Birthday</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Chewy&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <script>document.documentElement.classList.add('js');</script>
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="hero">
+<!-- Reusable teddy bear (princess crown + pink bows) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="teddy" viewBox="0 0 120 134">
+    <!-- ears -->
+    <circle cx="31" cy="31" r="15" fill="#e8b88b"/><circle cx="31" cy="31" r="8" fill="#f7d6b8"/>
+    <circle cx="89" cy="31" r="15" fill="#e8b88b"/><circle cx="89" cy="31" r="8" fill="#f7d6b8"/>
+    <!-- feet + body + arms -->
+    <ellipse cx="37" cy="124" rx="15" ry="9" fill="#e8b88b"/><ellipse cx="83" cy="124" rx="15" ry="9" fill="#e8b88b"/>
+    <ellipse cx="60" cy="100" rx="35" ry="30" fill="#eec194"/>
+    <ellipse cx="60" cy="104" rx="21" ry="21" fill="#f8dcc2"/>
+    <ellipse cx="27" cy="94" rx="10" ry="17" fill="#e8b88b" transform="rotate(18 27 94)"/>
+    <ellipse cx="93" cy="94" rx="10" ry="17" fill="#e8b88b" transform="rotate(-18 93 94)"/>
+    <!-- head -->
+    <ellipse cx="60" cy="54" rx="35" ry="31" fill="#eec194"/>
+    <ellipse cx="60" cy="64" rx="16" ry="12" fill="#f9e3cc"/>
+    <ellipse cx="60" cy="59" rx="5.5" ry="3.8" fill="#7a4a35"/>
+    <path d="M60 62v4M60 66q-5 5-9 1M60 66q5 5 9 1" stroke="#7a4a35" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+    <circle cx="47" cy="48" r="3.4" fill="#5a3526"/><circle cx="73" cy="48" r="3.4" fill="#5a3526"/>
+    <circle cx="48" cy="46.8" r="1.1" fill="#fff"/><circle cx="74" cy="46.8" r="1.1" fill="#fff"/>
+    <circle cx="38" cy="60" r="5.5" fill="#ffb3c6" opacity=".65"/><circle cx="82" cy="60" r="5.5" fill="#ffb3c6" opacity=".65"/>
+    <!-- tiny crown -->
+    <path d="M49 27L51 14l5 6 4-9 4 9 5-6 2 13z" fill="#ffd36b" stroke="#e0a93a" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- head bow -->
+    <ellipse cx="26" cy="22" rx="11" ry="7" fill="#ffb3c6" transform="rotate(-22 26 22)"/>
+    <ellipse cx="43" cy="22" rx="11" ry="7" fill="#ffb3c6" transform="rotate(22 43 22)"/>
+    <circle cx="34.5" cy="23.5" r="4.6" fill="#ff8fb0"/>
+    <!-- neck bow -->
+    <ellipse cx="47" cy="86" rx="12" ry="7.5" fill="#ffb3c6" transform="rotate(-18 47 86)"/>
+    <ellipse cx="73" cy="86" rx="12" ry="7.5" fill="#ffb3c6" transform="rotate(18 73 86)"/>
+    <circle cx="60" cy="87" r="5.4" fill="#ff8fb0"/>
+  </symbol>
+</svg>
 
-  <div class="bunting" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+<main class="sheet" id="sheet">
 
-  <div class="clouds" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="floaters" id="floaters" aria-hidden="true"></div>
-  <div class="friend friend-castle" aria-hidden="true">🏰</div>
-  <div class="friend friend-unicorn" aria-hidden="true">🦄</div>
 
-  <div class="hero-inner">
-    <p class="pill">👑 You're invited to a royal party! 👑</p>
+  <span class="cloud" style="top:30px;left:-40px;--s:.7"></span>
+  <span class="cloud" style="top:150px;right:-50px;--s:.9;animation-delay:-4s"></span>
+  <span class="cloud" style="top:620px;left:-60px;--s:.8;animation-delay:-8s"></span>
+  <span class="cloud" style="top:1010px;right:-60px;--s:.8;animation-delay:-2s"></span>
 
-    <div class="photo-wrap" aria-hidden="true">
-      <span class="tiara">👑</span>
-      <div class="photo">
-        <span class="emoji">👸</span>
-        <span class="img"></span>
-      </div>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+
+    <div class="teddy-wrap">
+      <span class="side-bow sb-l" aria-hidden="true">🎀</span>
+      <span class="side-bow sb-r" aria-hidden="true">🎀</span>
+      <svg class="teddy" viewBox="0 0 120 134" role="img" aria-label="Teddy bear with a crown"><use href="#teddy"/></svg>
     </div>
 
-    <h1 aria-label="Jhanelle Atasha">
-      <span class="nm" aria-hidden="true">Jhanelle</span>
-      <span class="nm" aria-hidden="true">Atasha</span>
-    </h1>
+    <div class="arch">
 
-    <div class="age" aria-label="One year old">
-      <b>1</b>
-    </div>
-    <p class="turning">Our little princess is turning ONE! 🎀</p>
+      <h1 class="title">
+        <span class="t-serif">MY 1ST</span>
+        <span class="t-script">Birthday</span>
+      </h1>
 
-    <p class="date">Saturday · December 12, 2026</p>
-    <p class="host">With love from the Valenzuela family 💖</p>
+      <p class="honor">in honor of<br>our little princess<br>turning one…</p>
 
-    <div class="count" aria-label="Countdown">
-      <div class="cb c1"><b id="d">00</b><small>DAYS</small></div>
-      <div class="cb c2"><b id="h">00</b><small>HOURS</small></div>
-      <div class="cb c3"><b id="m">00</b><small>MINS</small></div>
-      <div class="cb c4"><b id="s">00</b><small>SECS</small></div>
-    </div>
+      <p class="name">Jhanelle Atasha</p>
 
-    <div class="scrollcue">Scroll down, princess!<span>⬇</span></div>
-  </div>
-</section>
-
-<!-- ============ SAVE THE DATE ============ -->
-<section class="details">
-  <div class="rv">
-    <p class="pill pill-lilac">Details</p>
-    <h2>Save <i>the date!</i></h2>
-  </div>
-
-  <div class="plaque rv">
-    <span class="ribbon">♥ SATURDAY ♥</span>
-    <span class="plaque-month">December</span>
-    <div class="blocks" aria-label="12">
-      <span class="blk b1">1</span>
-      <span class="blk b2">2</span>
-    </div>
-    <span class="plaque-year">2026</span>
-    <span class="plaque-star s1">🦋</span><span class="plaque-star s2">✨</span><span class="plaque-star s3">🌸</span>
-  </div>
-
-  <div class="timeline">
-
-    <div class="tl-item rv">
-      <span class="tl-dot">💖</span>
-      <div class="card card-lilac">
-        <span class="ic">⛪</span>
-        <div>
-          <small>CHURCH · 10:00 AM</small>
-          <h3>St. Gabriel the Archangel Parish</h3>
-          <a class="mini" href="https://www.google.com/maps/dir/?api=1&destination=St.+Gabriel+the+Archangel+Parish+Quezon+City" target="_blank" rel="noopener">Directions →</a>
+      <div class="photo-frame">
+        <div class="photo">
+          <span class="emoji">👸</span>
+          <span class="img"></span>
         </div>
+        <span class="pf-star pf1">✦</span><span class="pf-star pf2">★</span>
+      </div>
+
+      <p class="invite">Mommy &amp; Daddy are so excited,<br>
+        please join us as we celebrate<br>
+        our baby girl's big day.</p>
+
+      <div class="rainbow" aria-hidden="true"></div>
+
+      <p class="host">With love from the Valenzuela family</p>
+
+      <!-- Countdown -->
+      <div class="count" aria-label="Countdown to the big day">
+        <div class="cb"><b id="d">00</b><small>DAYS</small></div>
+        <div class="cb"><b id="h">00</b><small>HOURS</small></div>
+        <div class="cb"><b id="m">00</b><small>MINS</small></div>
+        <div class="cb"><b id="s">00</b><small>SECS</small></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SAVE THE DATE ============ -->
+  <section class="std">
+
+    <div class="rv">
+      <p class="eyebrow">SAVE THE DATE</p>
+      <p class="year">2026</p>
+      <div class="daterow">
+        <span class="dr-line"></span><span class="dr-txt">SATURDAY</span>
+        <b class="dr-num">12</b>
+        <span class="dr-txt">DECEMBER</span><span class="dr-line"></span>
       </div>
     </div>
 
-    <div class="tl-item rv">
-      <span class="tl-dot">💖</span>
-      <div class="card card-pink">
-        <span class="ic">🏰</span>
-        <div>
-          <small>ROYAL PARTY · 12:00 NOON</small>
-          <h3>The Celandine, Balintawak</h3>
-          <p>Balingasa, Quezon City</p>
-          <a class="mini" href="https://www.google.com/maps/dir/?api=1&destination=The+Celandine+Balintawak%2C+Brgy.+A.+Bonifacio+Ave%2C+Balingasa%2C+Quezon+City%2C+Metro+Manila" target="_blank" rel="noopener">Directions →</a>
-        </div>
+    <!-- Church -->
+    <div class="event rv">
+      <p class="script">Church</p>
+      <p class="time">10:00 AM</p>
+      <p class="place">St. Gabriel the Archangel Parish</p>
+      <a class="pillbtn" href="https://www.google.com/maps/dir/?api=1&destination=St.+Gabriel+the+Archangel+Parish+Quezon+City" target="_blank" rel="noopener"><span>📍</span> VIEW MAP</a>
+    </div>
+
+    <!-- Reception -->
+    <div class="event rv">
+      <p class="script">Reception</p>
+      <p class="time">12:00 NOON</p>
+      <p class="place">The Celandine, Balintawak<br><em>Balingasa, Quezon City</em></p>
+      <a class="pillbtn" href="https://www.google.com/maps/dir/?api=1&destination=The+Celandine+Balintawak%2C+Brgy.+A.+Bonifacio+Ave%2C+Balingasa%2C+Quezon+City%2C+Metro+Manila" target="_blank" rel="noopener"><span>📍</span> VIEW MAP</a>
+    </div>
+
+    <!-- Gift note -->
+    <div class="gift rv">
+      <span class="gift-ic">🎁</span>
+      <p>Monetary gifts are much appreciated.<br><b>Thank you!</b> 💖</p>
+    </div>
+
+    <p class="foot rv">Onsite parking is available at the reception, and the venue is a short walk from nearby hotels for out-of-town guests.</p>
+  </section>
+
+  <!-- ============ MAP ============ -->
+  <section class="venue">
+    <div class="rv">
+      <p class="script big">Find the castle</p>
+      <p class="vcopy">Tap a button to see where to find us ✨</p>
+    </div>
+
+    <div class="tabs rv" role="tablist">
+      <button class="tab active" role="tab" aria-selected="true"
+        data-title="St. Gabriel the Archangel Parish"
+        data-sub="Church · 10:00 AM"
+        data-src="https://www.google.com/maps?q=St.+Gabriel+the+Archangel+Parish+Quezon+City&output=embed"
+        data-dir="https://www.google.com/maps/dir/?api=1&destination=St.+Gabriel+the+Archangel+Parish+Quezon+City">⛪ Church</button>
+      <button class="tab" role="tab" aria-selected="false"
+        data-title="The Celandine Balintawak"
+        data-sub="Reception · 12:00 Noon"
+        data-src="https://www.google.com/maps?q=The+Celandine+Balintawak,+Brgy.+A.+Bonifacio+Ave,+Balingasa,+Quezon+City,+Metro+Manila&output=embed"
+        data-dir="https://www.google.com/maps/dir/?api=1&destination=The+Celandine+Balintawak%2C+Brgy.+A.+Bonifacio+Ave%2C+Balingasa%2C+Quezon+City%2C+Metro+Manila">🏰 Reception</button>
+    </div>
+
+    <div class="photo-frame map-frame rv">
+      <div class="map">
+        <iframe id="map-frame"
+          src="https://www.google.com/maps?q=St.+Gabriel+the+Archangel+Parish+Quezon+City&output=embed"
+          title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
 
-  </div>
-
-  <div class="gift rv">
-    <span class="gift-ic">🎁</span>
-    <p>Monetary gifts are much appreciated. <b>Thank you!</b> 💖</p>
-  </div>
-
-  <p class="foot rv">Onsite parking is available at the party venue, and it's a short walk from nearby hotels for out-of-town guests. 🚗</p>
-</section>
-
-<!-- ============ VENUE ============ -->
-<section class="venue">
-  <div class="rv">
-    <p class="pill pill-pink">The venue</p>
-    <h2>Find the <i>castle!</i></h2>
-    <p class="vcopy">Two magical stops on one big day — tap a button to see the map! 🗺️✨</p>
-  </div>
-
-  <div class="tabs rv" role="tablist">
-    <button class="tab active" role="tab" aria-selected="true"
-      data-title="St. Gabriel the Archangel Parish"
-      data-sub="Church · 10:00 AM"
-      data-src="https://www.google.com/maps?q=St.+Gabriel+the+Archangel+Parish+Quezon+City&output=embed"
-      data-dir="https://www.google.com/maps/dir/?api=1&destination=St.+Gabriel+the+Archangel+Parish+Quezon+City">⛪ Church</button>
-    <button class="tab" role="tab" aria-selected="false"
-      data-title="The Celandine Balintawak"
-      data-sub="Royal party · 12:00 Noon"
-      data-src="https://www.google.com/maps?q=The+Celandine+Balintawak,+Brgy.+A.+Bonifacio+Ave,+Balingasa,+Quezon+City,+Metro+Manila&output=embed"
-      data-dir="https://www.google.com/maps/dir/?api=1&destination=The+Celandine+Balintawak%2C+Brgy.+A.+Bonifacio+Ave%2C+Balingasa%2C+Quezon+City%2C+Metro+Manila">🏰 Party</button>
-  </div>
-
-  <div class="frame rv">
-    <div class="map">
-      <iframe id="map-frame"
-        src="https://www.google.com/maps?q=St.+Gabriel+the+Archangel+Parish+Quezon+City&output=embed"
-        title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="vcard rv">
+      <small id="v-sub">Church · 10:00 AM</small>
+      <h3 id="v-title">St. Gabriel the Archangel Parish</h3>
+      <a class="pillbtn solid" id="v-dir" href="https://www.google.com/maps/dir/?api=1&destination=St.+Gabriel+the+Archangel+Parish+Quezon+City" target="_blank" rel="noopener">GET DIRECTIONS →</a>
     </div>
-  </div>
+  </section>
 
-  <div class="vcard rv">
-    <small id="v-sub">Church · 10:00 AM</small>
-    <h3 id="v-title">St. Gabriel the Archangel Parish</h3>
-    <a class="btn" id="v-dir" href="https://www.google.com/maps/dir/?api=1&destination=St.+Gabriel+the+Archangel+Parish+Quezon+City" target="_blank" rel="noopener">Get directions <span>→</span></a>
-  </div>
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <p class="script big rv">¡We can't wait<br>to see you!</p>
+    <div class="teddy-wrap small rv">
+      <svg class="teddy" viewBox="0 0 120 134" aria-hidden="true"><use href="#teddy"/></svg>
+    </div>
+    <p class="hash">#JhanelleTurnsOne 👑</p>
+  </section>
 
-  <p class="bye rv">See you at the party! 👑💖🦄</p>
-</section>
+</main>
 
 <script src="script.js"></script>
 </body>
