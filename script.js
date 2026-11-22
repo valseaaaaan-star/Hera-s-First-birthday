@@ -30,45 +30,53 @@
 
 
 /* =========================================
-   GIRLY BOUNCY NAME — pink, lilac, gold & sky letters
+   TWINKLING GOLD + PINK STARS across the whole page
 ========================================= */
 (function () {
-  var colors = ["#ff5fa2", "#ffcf4d", "#c9a7ff", "#ffb3d6", "#7fd0ff", "#ff8cc0"];
-  var n = 0;
+  var sheet = document.getElementById("sheet");
+  if (!sheet) return;
+  var chars = ["✦", "★", "✧", "✦"];
+  var colors = ["#e3b75f", "#f3dca0", "#f4a3b3", "#e3b75f", "#f8c4cc"];
 
-  document.querySelectorAll(".nm").forEach(function (el) {
-    var text = el.textContent.trim();
-    el.textContent = "";
+  function build() {
+    var h = sheet.scrollHeight;
+    var count = Math.round(h / 55);
 
-    text.split("").forEach(function (ch) {
-      var span = document.createElement("span");
-      span.className = "ltr";
-      span.textContent = ch;
-      span.style.color = colors[n % colors.length];
-      span.style.animationDelay = (n * 0.12).toFixed(2) + "s";
-      el.appendChild(span);
-      n++;
-    });
-  });
+    for (var i = 0; i < count; i++) {
+      var s = document.createElement("span");
+      s.className = "star";
+      s.textContent = chars[i % chars.length];
+      s.style.left = Math.random() * 94 + "%";
+      s.style.top = Math.random() * (h - 30) + "px";
+      s.style.fontSize = 10 + Math.random() * 14 + "px";
+      s.style.color = colors[i % colors.length];
+      s.style.animationDelay = (Math.random() * 3.4).toFixed(2) + "s";
+      s.style.animationDuration = (2.6 + Math.random() * 2.4).toFixed(2) + "s";
+      sheet.appendChild(s);
+    }
+  }
+
+  if (document.readyState === "complete") build();
+  else window.addEventListener("load", build);
 })();
 
 
 /* =========================================
-   FLOATING HEARTS, BUTTERFLIES & CROWNS in the hero
+   FLOATING HEARTS, BUTTERFLIES & BOWS near the top
 ========================================= */
 (function () {
   var box = document.getElementById("floaters");
   if (!box) return;
-  var things = ["💖", "🦋", "👑", "🎀", "✨", "🌸", "💗", "🎈"];
+  var things = ["💖", "🦋", "🎀", "✨", "🌸", "💗"];
 
-  for (var i = 0; i < 14; i++) {
+  for (var i = 0; i < 9; i++) {
     var s = document.createElement("span");
     s.className = "fl";
     s.textContent = things[i % things.length];
     s.style.left = Math.random() * 92 + "%";
-    s.style.fontSize = 22 + Math.random() * 22 + "px";
-    s.style.animationDuration = (9 + Math.random() * 9).toFixed(1) + "s";
-    s.style.animationDelay = (-Math.random() * 14).toFixed(1) + "s";
+    s.style.fontSize = 18 + Math.random() * 14 + "px";
+    s.style.animationDuration = (11 + Math.random() * 9).toFixed(1) + "s";
+    s.style.animationDelay = (-Math.random() * 16).toFixed(1) + "s";
     box.appendChild(s);
   }
 })();
@@ -128,7 +136,7 @@
 
 
 /* =========================================
-   VENUE TABS — Church / Party
+   MAP TABS — Church / Reception
 ========================================= */
 (function () {
   var tabs = document.querySelectorAll(".tab");
