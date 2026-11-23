@@ -1,130 +1,116 @@
-/* =========================================
-   COUNTDOWN — church ceremony, Dec 12, 2026, 10:00 AM
-========================================= */
+"use strict";
+
+/* =========================================================
+   HELPERS
+========================================================= */
+var $ = function (id) { return document.getElementById(id); };
+var rand = function (min, max) { return min + Math.random() * (max - min); };
+var pad = function (n) { return String(n).padStart(2, "0"); };
+
+/* run once the page (fonts + layout) has fully loaded */
+function onLoad(fn) {
+  if (document.readyState === "complete") fn();
+  else window.addEventListener("load", fn);
+}
+
+/* =========================================================
+   1. COUNTDOWN — church ceremony, Dec 12, 2026, 10:00 AM
+========================================================= */
 (function () {
   var target = new Date("2026-12-12T10:00:00");
-  var els = {
-    d: document.getElementById("d"),
-    h: document.getElementById("h"),
-    m: document.getElementById("m"),
-    s: document.getElementById("s")
-  };
-
-  function pad(n) { return String(n).padStart(2, "0"); }
+  var box = { d: $("d"), h: $("h"), m: $("m"), s: $("s") };
 
   function tick() {
-    var diff = target - new Date();
-    if (diff <= 0) {
-      for (var k in els) els[k].textContent = "00";
-      return;
-    }
-    els.d.textContent = pad(Math.floor(diff / 864e5));
-    els.h.textContent = pad(Math.floor(diff % 864e5 / 36e5));
-    els.m.textContent = pad(Math.floor(diff % 36e5 / 6e4));
-    els.s.textContent = pad(Math.floor(diff % 6e4 / 1e3));
+    var diff = Math.max(0, target - new Date());
+    box.d.textContent = pad(Math.floor(diff / 864e5));
+    box.h.textContent = pad(Math.floor(diff % 864e5 / 36e5));
+    box.m.textContent = pad(Math.floor(diff % 36e5 / 6e4));
+    box.s.textContent = pad(Math.floor(diff % 6e4 / 1e3));
   }
 
   tick();
   setInterval(tick, 1000);
 })();
 
-
-/* =========================================
-   TWINKLING GOLD + PINK STARS across the whole page
-========================================= */
+/* =========================================================
+   2. TWINKLING GOLD + PINK STARS across the whole page
+========================================================= */
 (function () {
-  var sheet = document.getElementById("sheet");
+  var sheet = $("sheet");
   if (!sheet) return;
-  var chars = ["✦", "★", "✧", "✦"];
+
+  var shapes = ["✦", "★", "✧", "✦"];
   var colors = ["#e3b75f", "#f3dca0", "#f4a3b3", "#e3b75f", "#f8c4cc"];
 
-  function build() {
-    var h = sheet.scrollHeight;
-    var count = Math.round(h / 55);
+  onLoad(function () {
+    var height = sheet.scrollHeight;
+    var count = Math.round(height / 55);
 
     for (var i = 0; i < count; i++) {
-      var s = document.createElement("span");
-      s.className = "star";
-      s.textContent = chars[i % chars.length];
-      s.style.left = Math.random() * 94 + "%";
-      s.style.top = Math.random() * (h - 30) + "px";
-      s.style.fontSize = 10 + Math.random() * 14 + "px";
-      s.style.color = colors[i % colors.length];
-      s.style.animationDelay = (Math.random() * 3.4).toFixed(2) + "s";
-      s.style.animationDuration = (2.6 + Math.random() * 2.4).toFixed(2) + "s";
-      sheet.appendChild(s);
+      var star = document.createElement("span");
+      star.className = "star";
+      star.textContent = shapes[i % shapes.length];
+      star.style.cssText =
+        "left:" + rand(0, 94) + "%;" +
+        "top:" + rand(0, height - 30) + "px;" +
+        "font-size:" + rand(10, 24) + "px;" +
+        "color:" + colors[i % colors.length] + ";" +
+        "animation-delay:" + rand(0, 3.4).toFixed(2) + "s;" +
+        "animation-duration:" + rand(2.6, 5).toFixed(2) + "s";
+      sheet.appendChild(star);
+    }
+  });
+})();
+
+/* =========================================================
+   3. PETALS — rising behind the bear + falling over the page
+========================================================= */
+(function () {
+  var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
+
+  function petals(parent, count, className, size, left, delay) {
+    for (var i = 0; i < count; i++) {
+      var p = document.createElement("span");
+      var s = rand(size[0], size[1]);
+      p.className = className;
+      p.style.cssText =
+        "width:" + s + "px;height:" + s + "px;" +
+        "background:" + colors[i % colors.length] + ";" +
+        "left:" + rand(0, left) + "%;" +
+        "animation-duration:" + rand(10, 18).toFixed(1) + "s;" +
+        "animation-delay:" + (-rand(0, delay)).toFixed(1) + "s";
+      parent.appendChild(p);
     }
   }
 
-  if (document.readyState === "complete") build();
-  else window.addEventListener("load", build);
-})();
+  var rising = $("floaters");
+  if (rising) petals(rising, 8, "fl petal-shape", [10, 20], 92, 16);
 
-
-/* =========================================
-   RISING PETALS behind the bear (shapes, no emoji)
-========================================= */
-(function () {
-  var box = document.getElementById("floaters");
-  if (!box) return;
-  var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
-
-  for (var i = 0; i < 8; i++) {
-    var s = document.createElement("span");
-    var size = 10 + Math.random() * 10;
-    s.className = "fl petal-shape";
-    s.style.width = size + "px";
-    s.style.height = size + "px";
-    s.style.background = colors[i % colors.length];
-    s.style.left = Math.random() * 92 + "%";
-    s.style.animationDuration = (11 + Math.random() * 9).toFixed(1) + "s";
-    s.style.animationDelay = (-Math.random() * 16).toFixed(1) + "s";
-    box.appendChild(s);
-  }
-})();
-
-
-/* =========================================
-   PRINCESS DECOR — falling petals (shapes, no emoji)
-========================================= */
-(function () {
-  function rnd(a, b) { return a + Math.random() * (b - a); }
   var layer = document.createElement("div");
   layer.className = "petal-layer";
   layer.setAttribute("aria-hidden", "true");
-  var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
-  for (var i = 0; i < 22; i++) {
-    var p = document.createElement("span");
-    var size = rnd(9, 18);
-    p.className = "petal";
-    p.style.width = size + "px";
-    p.style.height = size + "px";
-    p.style.background = colors[i % colors.length];
-    p.style.left = rnd(0, 96) + "%";
-    p.style.animationDuration = rnd(10, 18).toFixed(1) + "s";
-    p.style.animationDelay = (-rnd(0, 16)).toFixed(1) + "s";
-    layer.appendChild(p);
-  }
+  petals(layer, 22, "petal", [9, 18], 96, 16);
   document.body.appendChild(layer);
 })();
 
-
-/* =========================================
-   TAP THE HERO — princess confetti pop!
-========================================= */
+/* =========================================================
+   4. TAP THE HERO — princess confetti pop
+========================================================= */
 (function () {
-  var hero = document.getElementById("hero");
+  var hero = $("hero");
   if (!hero) return;
+
   var bits = ["👑", "💖", "🦋", "🎀", "🌸", "✨", "🦄"];
+  var PIECES = 10;
 
   hero.addEventListener("click", function (e) {
     if (e.target.closest("a, button")) return;
     var rect = hero.getBoundingClientRect();
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < PIECES; i++) {
+      var angle = (Math.PI * 2 * i) / PIECES;
+      var dist = rand(44, 90);
       var p = document.createElement("span");
-      var angle = (Math.PI * 2 * i) / 10;
-      var dist = 44 + Math.random() * 46;
       p.className = "pop";
       p.textContent = bits[Math.floor(Math.random() * bits.length)];
       p.style.left = e.clientX - rect.left + "px";
@@ -132,15 +118,14 @@
       p.style.setProperty("--x", Math.cos(angle) * dist + "px");
       p.style.setProperty("--y", Math.sin(angle) * dist + "px");
       hero.appendChild(p);
-      setTimeout(function (el) { el.remove(); }, 900, p);
+      setTimeout(p.remove.bind(p), 900);
     }
   });
 })();
 
-
-/* =========================================
-   SCROLL REVEAL
-========================================= */
+/* =========================================================
+   5. SCROLL REVEAL
+========================================================= */
 (function () {
   var items = document.querySelectorAll(".rv");
 
@@ -150,38 +135,35 @@
   }
 
   var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        e.target.classList.add("on");
-        io.unobserve(e.target);
-      }
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("on");
+      io.unobserve(entry.target);
     });
   }, { threshold: 0.1 });
 
   items.forEach(function (el) { io.observe(el); });
 })();
 
-
-/* =========================================
-   MAP TABS — Church / Reception
-========================================= */
+/* =========================================================
+   6. MAP TABS — Church / Reception
+========================================================= */
 (function () {
   var tabs = document.querySelectorAll(".tab");
-  var frame = document.getElementById("map-frame");
-  var title = document.getElementById("v-title");
-  var sub = document.getElementById("v-sub");
-  var dir = document.getElementById("v-dir");
-
+  var frame = $("map-frame");
   if (!tabs.length || !frame) return;
+
+  var title = $("v-title");
+  var sub = $("v-sub");
+  var dir = $("v-dir");
 
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
       tabs.forEach(function (t) {
-        t.classList.remove("active");
-        t.setAttribute("aria-selected", "false");
+        var on = t === tab;
+        t.classList.toggle("active", on);
+        t.setAttribute("aria-selected", String(on));
       });
-      tab.classList.add("active");
-      tab.setAttribute("aria-selected", "true");
 
       frame.src = tab.dataset.src;
       title.textContent = tab.dataset.title;
