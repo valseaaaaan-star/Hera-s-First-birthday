@@ -328,11 +328,11 @@ small {
 .divider i   { flex: 1; max-width: 120px; border-top: 2px dotted #eba7b1; }
 .divider svg { flex: none; width: 120px; height: 28px; overflow: visible; }
 
-.std, .venue {
+.std, .venue, .rsvp {
   background: rgba(255, 255, 255, .72);
   text-align: center;
 }
-.std::before, .venue::before {              /* scalloped top edge */
+.std::before, .venue::before, .rsvp::before {              /* scalloped top edge */
   content: "";
   position: absolute;
   inset: -11px 0 auto;
@@ -482,6 +482,23 @@ small {
   box-shadow: var(--shadow);
 }
 .vcard h3 { margin-top: 2px; font: 600 19px var(--serif); color: var(--rose-deep); }
+
+/* =========================================================
+   8b. RSVP  (Tally embed in a framed card)
+========================================================= */
+.rsvp { padding: 40px 20px; }
+
+.rsvp-card {
+  width: min(440px, 100%);
+  margin: 18px auto 0;
+  padding: 14px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(227, 183, 95, .45);
+  outline: 2px dotted var(--line);
+  outline-offset: -8px;
+}
+.rsvp-card iframe { display: block; width: 100%; min-height: 380px; border: 0; }
 
 /* =========================================================
    9. CLOSING  (castle silhouette)
