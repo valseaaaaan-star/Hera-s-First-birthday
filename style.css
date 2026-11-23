@@ -112,9 +112,13 @@ small {
   overflow: hidden;
   pointer-events: none;
 }
-.fl { position: absolute; bottom: -50px; opacity: .85; animation: rise linear infinite; }
+.fl { position: absolute; top: -40px; opacity: .9; animation: sink linear infinite; }
 .petal-shape { border-radius: 150% 0 150% 0; }
-@keyframes rise { to { transform: translateY(-820px) rotate(14deg); } }
+@keyframes sink {
+  0%   { transform: translate(0, 0) rotate(0); }
+  50%  { transform: translate(24px, 400px) rotate(160deg); }
+  100% { transform: translate(-14px, 840px) rotate(320deg); }
+}
 
 .petal-layer {
   position: fixed;
@@ -524,7 +528,43 @@ small {
 .closing > :not(.castle) { position: relative; z-index: 2; }
 
 /* =========================================================
-   10. SCROLL REVEAL + RESPONSIVE + REDUCED MOTION
+   10. CARTOON TOUCH  (chunky outlines, sticker shadows, bounce)
+========================================================= */
+/* rounder font for buttons + small labels */
+.pillbtn, .tab, .cb small, .hash { font-family: var(--fun); }
+
+/* titles pop off the page with a soft white "sticker" edge */
+.t-serif, .t-script, .script.big, .dr-num { text-shadow: 2px 3px 0 #fff; }
+.name { filter: drop-shadow(0 3px 0 #fff); }
+
+/* chunky buttons with a hard bottom edge that presses down */
+.pillbtn {
+  border: 2.5px solid #fff;
+  box-shadow: 0 5px 0 #e59aa8, 0 12px 16px rgba(230, 130, 150, .28);
+  transition: transform .15s var(--pop), box-shadow .15s;
+}
+.pillbtn.solid, .rsvp .pillbtn.solid { box-shadow: 0 5px 0 #a94a58, 0 12px 16px rgba(196, 98, 111, .3); }
+.pillbtn:active { transform: translateY(4px); box-shadow: 0 1px 0 #e59aa8; }
+
+.tab { box-shadow: 0 5px 0 #efb0bb, inset 0 0 0 2px #f6c3cb; }
+.tab.active { box-shadow: 0 5px 0 #a94a58; }
+
+/* countdown bubbles + cards get an outline and a hard shadow */
+.cb { border: 3px solid #fff; box-shadow: 0 5px 0 #f2b0bb, 0 12px 16px rgba(215, 125, 140, .22), inset 0 0 0 2px rgba(243, 220, 160, .7); }
+.photo-frame { box-shadow: 0 6px 0 #f2b0bb, 0 14px 24px rgba(215, 125, 140, .22), 0 0 0 1px rgba(227, 183, 95, .45); }
+.vcard { border: 2.5px solid #f6c3cb; box-shadow: 0 6px 0 #f2b0bb, var(--shadow); }
+.gift { box-shadow: 0 6px 0 #f2b0bb, var(--shadow); }
+.rsvp-card { box-shadow: 0 7px 0 #f08fa3, var(--shadow), inset 0 0 0 2px rgba(255, 255, 255, .55); }
+
+/* playful sticker tilt + gentle bounce */
+.hero .photo-frame { transform: rotate(-1.5deg); }
+.gift { transform: rotate(-.8deg); }
+.cb { animation: bob 3s ease-in-out infinite; }
+.cb:nth-child(2n) { animation-delay: -.8s; }
+.cb:nth-child(3n) { animation-delay: -1.6s; }
+
+/* =========================================================
+   11. SCROLL REVEAL + RESPONSIVE + REDUCED MOTION
 ========================================================= */
 .js .rv { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s var(--pop); }
 .js .rv.on { opacity: 1; transform: none; }
