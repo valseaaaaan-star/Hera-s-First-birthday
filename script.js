@@ -63,10 +63,10 @@ function onLoad(fn) {
 })();
 
 /* =========================================================
-   3. PETALS — rising behind the bear + falling over the page
+   3. PETALS — pink petals falling top to bottom (hero + whole page)
 ========================================================= */
 (function () {
-  var colors = ["#f8b8c6", "#fcd0b0", "#f4a3b3", "#fff0bd", "#f3dca0"];
+  var colors = ["#f8b8c6", "#f4a3b3", "#fcc9d3", "#f7a8b8", "#ffd1da"];
 
   function petals(parent, count, className, size, left, delay) {
     for (var i = 0; i < count; i++) {
@@ -83,13 +83,13 @@ function onLoad(fn) {
     }
   }
 
-  var rising = $("floaters");
-  if (rising) petals(rising, 8, "fl petal-shape", [10, 20], 92, 16);
+  var hero = $("floaters");
+  if (hero) petals(hero, 10, "fl petal-shape", [10, 20], 92, 16);
 
   var layer = document.createElement("div");
   layer.className = "petal-layer";
   layer.setAttribute("aria-hidden", "true");
-  petals(layer, 22, "petal", [9, 18], 96, 16);
+  petals(layer, 24, "petal", [9, 18], 96, 16);
   document.body.appendChild(layer);
 })();
 
