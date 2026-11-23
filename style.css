@@ -267,11 +267,19 @@ small {
 
 .name {
   margin-top: 12px;
-  font: 700 clamp(40px, 12.5vw, 58px) / 1.05 var(--script);
+  font: 700 clamp(38px, 11.5vw, 54px) / 1.05 var(--script);
   background: linear-gradient(90deg, var(--rose), #e89aa8, var(--rose));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.name .name-sub {
+  display: block;
+  margin-top: 2px;
+  font: 700 .62em / 1.1 var(--script);
+  letter-spacing: 0;
+  color: inherit;
 }
 
 .rainbow {
