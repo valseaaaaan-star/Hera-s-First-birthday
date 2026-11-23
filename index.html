@@ -194,6 +194,24 @@
   <!-- ornament divider -->
   <div class="divider" aria-hidden="true"><i></i><svg viewBox="0 0 120 28"><use href="#ornament"/></svg><i></i></div>
 
+  <!-- ============ RSVP ============ -->
+  <section class="rsvp" id="rsvp">
+    <div class="rv">
+      <p class="script big">RSVP</p>
+      <p class="vcopy">Kindly let us know if you can make it 💖</p>
+    </div>
+
+    <div class="rsvp-card rv">
+      <iframe data-tally-src="https://tally.so/embed/Qo7B1l?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy" width="100%" height="380" title="RSVP form"></iframe>
+    </div>
+
+    <a class="pillbtn solid rv" href="https://tally.so/r/Qo7B1l" target="_blank" rel="noopener">OPEN FORM IN NEW TAB →</a>
+  </section>
+
+  <!-- ornament divider -->
+  <div class="divider" aria-hidden="true"><i></i><svg viewBox="0 0 120 28"><use href="#ornament"/></svg><i></i></div>
+
   <!-- ============ CLOSING ============ -->
   <section class="closing">
 
@@ -225,6 +243,20 @@
 
 </main>
 
+<script>
+/* Tally embed loader */
+(function () {
+  var d = document, src = "https://tally.so/widgets/embed.js";
+  function load() {
+    if (typeof Tally !== "undefined") return Tally.loadEmbeds();
+    d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (f) { f.src = f.dataset.tallySrc; });
+  }
+  if (typeof Tally !== "undefined") return load();
+  var s = d.createElement("script");
+  s.src = src; s.onload = load; s.onerror = load;
+  d.body.appendChild(s);
+})();
+</script>
 <script src="script.js"></script>
 </body>
 </html>
