@@ -255,7 +255,15 @@ small {
 
 .honor  { margin-top: 14px; font-size: 15px; line-height: 1.55; }
 .invite { margin-top: 18px; font-size: 14.5px; line-height: 1.6; }
-.host   { margin-top: 18px; font-size: 13.5px; letter-spacing: .5px; }
+.host   { margin-top: 18px; font-size: 13.5px; line-height: 1.5; letter-spacing: .5px; }
+.host-name {
+  display: inline-block;
+  margin-top: 2px;
+  font: 700 clamp(24px, 7vw, 30px) / 1.15 var(--script);
+  letter-spacing: 0;
+  color: var(--rose-deep);
+  text-shadow: 2px 3px 0 #fff;
+}
 
 .name {
   margin-top: 12px;
